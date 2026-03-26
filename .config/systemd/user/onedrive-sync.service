@@ -1,0 +1,11 @@
+[Unit]
+Description=Sync files from wsl to OneDrive
+After=network.target
+
+[Service]
+ExecStart=/home/david/.local/bin/onedrive_sync.sh
+Type=oneshot
+
+[Install]
+WantedBy=default.target
+

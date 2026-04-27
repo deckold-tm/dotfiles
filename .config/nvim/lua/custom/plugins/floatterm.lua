@@ -3,7 +3,8 @@ return {
 		"nvzone/floaterm",
 		dependencies = "nvzone/volt",
 		opts = {
-			shell = "powershell.exe",
+			shell = "wsl.exe",
+			-- shell = "powershell.exe",
 		},
 		cmd = "FloatermToggle",
 		keys = {

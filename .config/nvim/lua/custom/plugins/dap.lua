@@ -90,7 +90,7 @@ return {
 			-- online, please don't ask me how to install them :)
 			ensure_installed = {
 				-- Update this to ensure that you have the debuggers for the langs you want
-				"python",
+				"debugpy",
 			},
 		},
 		-- mason-nvim-dap is loaded when nvim-dap loads
@@ -102,7 +102,12 @@ return {
 		desc = "Debugging support. Requires language specific adapters to be configured. (see lang extras)",
 
 		dependencies = {
-			-- "mfussenegger/nvim-dap-python",
+			{
+				"mfussenegger/nvim-dap-python",
+				config = function()
+					require("dap-python").setup("uv")
+				end,
+			},
 			"rcarriga/nvim-dap-ui",
 			-- virtual text for the debugger
 			{
@@ -135,7 +140,7 @@ return {
 		config = function()
 			-- load mason-nvim-dap here, after all adapters have been setup
 			-- if LazyVim.has("mason-nvim-dap.nvim") then
-			require("mason-nvim-dap").setup()
+			-- require("mason-nvim-dap").setup()
 			-- end
 
 			vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
@@ -147,20 +152,6 @@ return {
 					{ text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
 				)
 			end
-
-			-- setup dap config by VsCode launch.json file
-			local vscode = require("dap.ext.vscode")
-			local json = require("plenary.json")
-			vscode.json_decode = function(str)
-				return vim.json.decode(json.json_strip_comments(str))
-			end
-			vscode.load_launchjs(vim.fn.getcwd() .. "/.vscode/launch.json")
-		end,
-	},
-	{
-		"mfussenegger/nvim-dap-python",
-		config = function()
-			require("dap-python").setup("uv")
 		end,
 	},
 	{

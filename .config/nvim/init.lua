@@ -97,7 +97,8 @@ vim.g.have_nerd_font = false
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
-vim.o.shell = "powershell.exe"
+-- vim.o.shell = "powershell.exe"
+vim.o.shell = "wsl.exe"
 vim.o.hidden = true
 vim.o.fileformat = "unix"
 vim.o.fileformats = "unix,dos"
@@ -131,6 +132,9 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.softtabstop = 2
 -- Keep signcolumn on by default
 vim.o.signcolumn = "yes"
 
@@ -732,7 +736,6 @@ require("lazy").setup({
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
 				"ruff",
-				"ty",
 				"mypy",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
@@ -986,6 +989,7 @@ require("lazy").setup({
 	},
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
+		branch = "master",
 		build = ":TSUpdate",
 		main = "nvim-treesitter.configs", -- Sets main module to use for opts
 		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`

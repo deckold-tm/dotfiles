@@ -8,7 +8,7 @@ return {
 		},
 		cmd = "FloatermToggle",
 		keys = {
-			{ "<leader>tt", "<cmd>FloatermToggle<cr>", desc = "Toggle floating terminal" },
+			{ "<leader>Tt", "<cmd>FloatermToggle<cr>", desc = "Toggle floating terminal" },
 		},
 	},
 }

@@ -717,6 +717,11 @@ require("lazy").setup({
 						},
 					},
 				},
+				pylsp = {
+					settings = { pylsp = { plugins = { pycodestyle = { enabled = false } } } },
+				},
+				mypy = {},
+				pyright = {},
 			}
 
 			-- Ensure the servers and tools above are installed
